@@ -1,10 +1,10 @@
+const mock = require("../test/mocks/shopper_products");
 
-import mock from "../test/mocks/shopper_products";
-
-export const readCSV = async () => {
+const readCSV = async () => {
   const products = [];
-
   return mock
 }
 
-export const readXLSX = () => { }
+const readXLSX = () => { }
+
+module.exports = { readCSV, readXLSX };

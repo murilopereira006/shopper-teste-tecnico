@@ -1,12 +1,4 @@
-interface Product {
-  id: number,
-  code: number,
-  name: string,
-  cost_price: number,
-  sales_price: number
-}
-
-const mock: Product[] = [
+const mock = [
   { id: 1, code: 16, name: 'AZEITE PORTUGUS EXTRA VIRGEM GALLO 500ML', cost_price: 18.44, sales_price: 20.49 },
   { id: 2, code: 18, name: 'BEBIDA ENERGTICA VIBE 2L', cost_price: 8.09, sales_price: 8.99 },
   { id: 3, code: 19, name: 'ENERGTICO  RED BULL ENERGY DRINK 250ML', cost_price: 6.56, sales_price: 7.29 },
@@ -21,4 +13,4 @@ const mock: Product[] = [
   { id: 12, code: 1020, name: 'SUPER PACK RED BULL VARIADOS - 6 UNIDADES', cost_price: 51.81, sales_price: 57.00 }
 ];
 
-export default mock;
+module.exports = mock;
