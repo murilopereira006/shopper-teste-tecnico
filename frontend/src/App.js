@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import SideBar from './components/sideBar';
+import HomePage from './pages/Home';
+import ProductsPage from './pages/Products';
 
 function App() {
+  const [selectedItem, setSelectedItem] = useState('Home')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <SideBar
+        selectedItem={selectedItem}
+        setSelectedItem={setSelectedItem}
+      />
+
+      {selectedItem === 'Home' ? <HomePage /> : null}
+
+      {selectedItem === 'Products' ? <ProductsPage /> : null}
+    </>
   );
 }
 
