@@ -1,20 +1,17 @@
 import styled from 'styled-components'
 
-export const TopbarContainer = styled.div`
-  width: 100vw;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;   
-  align-items: center; 
-  position: fixed;
-  background-color: var(--secondary-color);
-  padding: 5px 20px;
-
-  box-sizing: border-box;
-  z-index: 9;
+export const Container = styled.button`
+  width: ${props => props.width ? props.width : '180px'};
+  height: ${props => props.height ? props.height : '50px'};
+  background-color: ${props => props.color ? props.color : 'var(--secondary)'};
+  border-radius: ${props => props.borderRadius ? props.borderRadius : '6px'};
+  margin: ${props => props.margin ? props.margin : '0'};
+  padding: ${props => props.padding ? props.padding : '0'};
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
 `;
 
-export const TopbarLeft = styled.div`
-
+export const Text = styled.h3`
+  font-size: ${props => props.fontSize ? props.fontSize : '16px'};
+  font-weight: ${props => props.fontWeight ? props.fontWeight : '400'};
+  color: ${props => props.textColor ? props.textColor : '#FFFFFF'};
 `;

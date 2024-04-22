@@ -3,6 +3,7 @@ import { FileUploader } from "react-drag-drop-files";
 import { XLSXreader, CSVreader } from '../../helpers/readers'
 import { Tooltip } from 'react-tooltip'
 import Warnings from "../../components/warnings"
+import Button from "../../components/buttons"
 import { Container, IndividualUpdate, LabelSyles } from "./styles";
 
 const fileTypes = ["CSV", "XLSX"];
@@ -62,6 +63,14 @@ export default function HomePage() {
             </LabelSyles>
           </IndividualUpdate>
       }
+      <Button
+        width="200px"
+        height="50px"
+        disabled={!product.code || !product.name || !product.cost_price || !product.sales_price}
+        action={() => console.log(product)}
+      >
+        Validar
+      </Button>
     </Container>
   );
 }
