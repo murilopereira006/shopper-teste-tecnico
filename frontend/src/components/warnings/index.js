@@ -1,5 +1,4 @@
 export default function Warnings({ array }) {
-  console.log('ooooooooo => ', array);
 
   if (!array) {
     return (

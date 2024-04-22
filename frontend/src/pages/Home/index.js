@@ -18,7 +18,7 @@ export default function HomePage() {
   const [dataArray, setDataArray] = useState(null);
   const handleChange = async (file) => {
     setFile(file);
-    const dataArrayContent = await XLSXreader(file);
+    const dataArrayContent = (file.type === 'text/csv' ? await CSVreader(file) : await XLSXreader(file));
     setDataArray(dataArrayContent);
   };
 
