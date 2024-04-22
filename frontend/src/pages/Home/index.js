@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
+import { Tooltip } from 'react-tooltip'
 import { Container, IndividualUpdate, LabelSyles } from "./styles";
 
 const fileTypes = ["CSV", "XLSX"];
@@ -38,19 +39,20 @@ export default function HomePage() {
               <input type="text" id="code" onChange={(event) => updateSingleProduct('code', event.target.value)} />
             </LabelSyles>
 
-            <LabelSyles htmlFor="name" >
+            {!product.code && <Tooltip id="my-tooltip" />}
+            <LabelSyles htmlFor="name" data-tooltip-id="my-tooltip" data-tooltip-content="Primeiro adicione o código do produto desejado." >
               name
               <input type="text" id="name" disabled={!product.code} onChange={(event) => updateSingleProduct('code', event.target.value)} />
             </LabelSyles>
 
             {/*validar valor numerico*/}
-            <LabelSyles htmlFor="cost_price" >
+            <LabelSyles htmlFor="cost_price" data-tooltip-id="my-tooltip" data-tooltip-content="Primeiro adicione o código do produto desejado." >
               cost price
               <input type="text" id="cost_price" disabled={!product.code} onChange={(event) => updateSingleProduct('code', event.target.value)} />
             </LabelSyles>
 
             {/*validar valor numerico e se eh maior que cost_price*/}
-            <LabelSyles htmlFor="sales_pricecode" >
+            <LabelSyles htmlFor="sales_pricecode" data-tooltip-id="my-tooltip" data-tooltip-content="Primeiro adicione o código do produto desejado." >
               sales price
               <input type="text" id="sales_price" disabled={!product.code} onChange={(event) => updateSingleProduct('code', event.target.value)} />
             </LabelSyles>
