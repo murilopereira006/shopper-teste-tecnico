@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,18 +8,19 @@ datasource db {
 }
 
 model products {
-  id          Int     @id @default(autoincrement())
-  code        Int     @unique
-  name        String
-  cost_price  Decimal
-  sales_price Decimal
-  packs       packs?
+  code        Int     @id
+  name        String  @db.VarChar(100)
+  cost_price  Decimal @db.Decimal(9, 2)
+  sales_price Decimal @db.Decimal(9, 2)
+  packs       packs[]
 }
 
 model packs {
   id         Int      @id @default(autoincrement())
-  pack_id    BigInt
-  product_id Int      @unique
+  pack_id    Int
+  product_id Int
   qty        Int
-  pack       products @relation(fields: [product_id], references: [code])
+  pack       products @relation(fields: [product_id], references: [code], onDelete: NoAction, onUpdate: NoAction, map: "packs_ibfk_1")
+
+  @@index([product_id], map: "product_id")
 }
