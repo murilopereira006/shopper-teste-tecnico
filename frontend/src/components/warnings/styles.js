@@ -1,20 +1,33 @@
 import styled from 'styled-components'
 
-export const TopbarContainer = styled.div`
-  width: 100vw;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;   
-  align-items: center; 
-  position: fixed;
-  background-color: var(--secondary-color);
-  padding: 5px 20px;
-
-  box-sizing: border-box;
-  z-index: 9;
+export const Container = styled.div`
+  width: 50%;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: scroll;
+  margin: 30px 0;
 `;
 
-export const TopbarLeft = styled.div`
+export const Row = styled.div`
+  width: 100%;
+  justify-content: space-between;
+  background-color: ${props => props.disclaimer ? 'var(--secondary)' : 'red'};
+  margin: 5px 0;
+  border-radius: 5px;
+`;
 
+export const Text = styled.div`
+  width: 25%;
+  max-width: 22%;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  padding: 5px 8px;
+  color: var(--white);
+  span {
+    color: var(--primary);
+    font-size: 11px;
+  }
 `;
