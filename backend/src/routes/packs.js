@@ -4,8 +4,6 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-
-// Obter todos os packs
 router.get('/', async (req, res) => {
   try {
     const allPacks = await prisma.packs.findMany();
@@ -16,7 +14,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Obter um pack pelo ID
 router.get('/:id', async (req, res) => {
   const packId = parseInt(req.params.id);
   try {
@@ -31,15 +28,13 @@ router.get('/:id', async (req, res) => {
     res.json(pack);
   } catch (error) {
     console.error(error);
-    res.status(500).send(`Erro ao obter o  ${error}`);
+    res.status(500).send(`Erro ao obter o pack. ${error}`);
   }
 });
 
-// Criar um novo pack
 router.post('/', async (req, res) => {
   const { product_id, qty } = req.body;
   try {
-    // Verifica se o produto existe antes de criar o pack
     const existingProduct = await prisma.products.findUnique({
       where: {
         id: product_id
@@ -49,8 +44,6 @@ router.post('/', async (req, res) => {
     if (!existingProduct) {
       return res.status(404).send('Produto não existente.');
     }
-
-    // Se o produto existe, cria o novo pack
     const newPack = await prisma.packs.create({
       data: {
         product_id,
@@ -61,11 +54,10 @@ router.post('/', async (req, res) => {
     res.json(newPack);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Erro ao criar um novo pack.');
+    res.status(500).send(`Erro ao criar um novo pack. ${error}`);
   }
 });
 
-// Atualizar um pack
 router.put('/:id', async (req, res) => {
   const packId = parseInt(req.params.id);
   const { qty } = req.body;
@@ -81,11 +73,10 @@ router.put('/:id', async (req, res) => {
     res.json(updatedPack);
   } catch (error) {
     console.error(error);
-    res.status(500).send(`Erro ao atualizar o  ${error}`);
+    res.status(500).send(`Erro ao atualizar o pack. ${error}`);
   }
 });
 
-// Deletar um pack
 router.delete('/:id', async (req, res) => {
   const packId = parseInt(req.params.id);
   try {
@@ -97,7 +88,7 @@ router.delete('/:id', async (req, res) => {
     res.send('Pack excluído com sucesso.');
   } catch (error) {
     console.error(error);
-    res.status(500).send(`Erro ao excluir o  ${error}`);
+    res.status(500).send(`Erro ao excluir o pack. ${error}`);
   }
 });
 
