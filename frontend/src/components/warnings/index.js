@@ -1,7 +1,6 @@
 import { Container, Row, Text } from './styles'
 
 export default function Warnings({ array }) {
-
   if (!array) {
     return (
       <h1>Loading</h1>

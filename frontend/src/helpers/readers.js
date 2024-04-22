@@ -6,7 +6,7 @@ export async function CSVreader(file) {
 
     reader.onload = (event) => {
       const data = event.target.result;
-      const dataArray = data.split('\n').map(row => row.split(','));
+      const dataArray = data.replace(/\r/g, '').split('\n').map(row => row.split(','));
 
       const headers = dataArray[0];
       const objectsArray = dataArray.slice(1).map(row => {
