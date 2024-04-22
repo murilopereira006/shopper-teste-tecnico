@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react';
+export default function Warnings({ array }) {
+  console.log('ooooooooo => ', array);
 
-export default function Warnings({ file }) {
-  const [state, setstate] = useState(null)
-
-  return (
-    <div>
-      <h1>Warnings</h1>
-    </div>
-  )
+  if (!array) {
+    return (
+      <h1>Loading</h1>
+    )
+  } else {
+    return (
+      <div>
+        <h1>Warnings</h1>
+      </div>
+    )
+  }
 }

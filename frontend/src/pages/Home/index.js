@@ -15,11 +15,11 @@ export default function HomePage() {
     cost_price: null,
     sales_price: null,
   });
-
+  const [dataArray, setDataArray] = useState(null);
   const handleChange = async (file) => {
     setFile(file);
-    const dataArray = await XLSXreader(file); // Utilizar a função XLSXreader para obter os dados do arquivo XLSX
-    console.log('Olhaaa => ', dataArray); // Exemplo de uso, pode ser adaptado conforme necessário
+    const dataArrayContent = await XLSXreader(file);
+    setDataArray(dataArrayContent);
   };
 
   const updateSingleProduct = (key, value) => {
@@ -32,7 +32,7 @@ export default function HomePage() {
       <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
       {
         file ?
-          <Warnings file={file} />
+          <Warnings array={dataArray} />
           :
           <IndividualUpdate>
             <h4>Ou digite as alterações que deseja fazer.</h4>
