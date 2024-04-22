@@ -19,6 +19,7 @@ export const Item = styled.div`
   height: 50px;
   padding: 10px 30px;
   justify-content: flex-start;
+  font-size: ${props => props.selected ? '25px' : '18px'};
   color: ${props => props.disable ? 'gray' : 'var(--text_color)'};
   cursor: ${props => props.disable ? 'not-allowed' : 'pointer'};
   transition: color, background-color 0.5s;

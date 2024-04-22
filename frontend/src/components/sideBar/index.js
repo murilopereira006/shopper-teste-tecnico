@@ -13,7 +13,7 @@ export default function SideBar({ selectedItem, setSelectedItem }) {
         <Item
           disable={true}
           selected={selectedItem === 'Dashboard'}
-          onClick={() => setSelectedItem('Dashboard')}
+        // onClick={() => setSelectedItem('Dashboard')}
         >
           Dashboard
         </Item>
@@ -28,7 +28,7 @@ export default function SideBar({ selectedItem, setSelectedItem }) {
         <Item
           disable={true}
           selected={selectedItem === 'Logout'}
-          onClick={() => setSelectedItem('Logout')}
+        // onClick={() => setSelectedItem('Logout')}
         >
           Logout
         </Item>
