@@ -27,6 +27,8 @@ export default function HomePage() {
     setProduct({ ...product, [key]: value });
   };
 
+  let enableButton = !product.code || !product.name || !product.cost_price || !product.sales_price;
+
   return (
     <Container>
       <h2>Arraste sua planilha de produtos ou <br />arquivo CSV para a área destacada! </h2>
@@ -66,8 +68,8 @@ export default function HomePage() {
       <Button
         width="200px"
         height="50px"
-        disabled={!product.code || !product.name || !product.cost_price || !product.sales_price}
-        action={() => console.log(product)}
+        disabled={!dataArray && enableButton}
+        action={() => console.log('validar produto')}
       >
         Validar
       </Button>
