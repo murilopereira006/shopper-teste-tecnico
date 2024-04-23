@@ -32,8 +32,9 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.get('/by-code', async (req, res) => {
-  const productCode = parseInt(req.query.code);
+router.get('/code/:id', async (req, res) => {
+  console.log('REQ =>  ', req)
+  const productCode = parseInt(req.params.id);
   try {
     const product = await prisma.products.findFirst({
       where: {
